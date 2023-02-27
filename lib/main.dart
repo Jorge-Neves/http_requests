@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http_requests/widgtets/bottomBar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,10 +40,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var appState = "default";
+  var appState = "home";
 
-  void navigate(String value) {
+  void navigate(value) {
     setState(() {
+      print(appState);
       appState = value;
     });
   }
@@ -54,9 +56,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            if (appState == Screens.home) ...{},
-            if (appState == Screens.about) ...{},
+          children: <Widget>[
+            if (appState == "home") ...{BottomBar(navigate: navigate)},
+            if (appState == Screens.about.name) ...{},
             if (appState == "default") ...{}
           ],
         ),
